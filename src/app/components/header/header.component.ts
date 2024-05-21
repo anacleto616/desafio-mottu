@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
-  readonly logo = '@assets/logo.png';
+  readonly logo = '../../../assets/logo.png';
 }

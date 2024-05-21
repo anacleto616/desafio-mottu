@@ -1,4 +1,20 @@
-<header class="p-2 flex justify-between">
+<header class="bg-[#0A0A0A] p-2 flex justify-between items-center border-b border-[#3D3D3D]">
   <img [src]="logo" alt="Logo da aplicação" />
-  <button type="button">Home|Favoritos</button>
+  <div class="text-sm font-semibold flex items-center">
+    <button
+      class="bg-white text-[#0A0A0A] py-2 px-4 border border-r-0 border-[#A4A4A4] rounded-tl-lg rounded-bl-lg flex items-center gap-2"
+      type="button"
+    >
+      <ng-icon name="matHome" size="24px"></ng-icon>
+      <span>Início</span>
+    </button>
+    <button
+      class="text-[#A4A4A4] py-2 px-4 border border-l-0 border-[#A4A4A4] rounded-tr-lg rounded-br-lg flex items-center gap-2 hover:bg-white hover:text-[#0A0A0A]"
+      type="button"
+    >
+      <ng-icon name="matFavorite" size="24px"></ng-icon>
+      <span>Favoritos</span>
+      <span>3</span>
+    </button>
+  </div>
 </header>
