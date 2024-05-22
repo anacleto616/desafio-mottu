@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ApiResult } from '../models/api-result.model';
 
 @Injectable({
   providedIn: 'root',
@@ -9,8 +11,8 @@ export class CharactersService {
 
   constructor(private http: HttpClient) {}
 
-  fetchCharacters() {
+  fetchCharacters(): Observable<ApiResult> {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return this.http.get<any>(this.apiUrl);
+    return this.http.get<ApiResult>(this.apiUrl);
   }
 }
