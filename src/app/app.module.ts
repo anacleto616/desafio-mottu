@@ -9,9 +9,16 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FavoritesComponent } from './pages/favorites/favorites.component';
 import { HomeComponent } from './pages/home/home.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, FavoritesComponent, HeaderComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    FavoritesComponent,
+    HeaderComponent,
+    NotFoundComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

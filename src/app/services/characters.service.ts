@@ -12,7 +12,6 @@ export class CharactersService {
   constructor(private http: HttpClient) {}
 
   fetchCharacters(): Observable<ApiResult> {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return this.http.get<ApiResult>(this.apiUrl);
   }
 }

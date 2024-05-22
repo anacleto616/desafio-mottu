@@ -9,6 +9,8 @@ import { Character } from '../../models/character.model';
 })
 export class HomeComponent implements OnInit {
   characters: Character[] = [];
+  titleNotFound = 'Nada foi encontrado';
+  subtitleNotFound = 'Nada foi encontrado';
 
   constructor(private charactersService: CharactersService) {}
 
