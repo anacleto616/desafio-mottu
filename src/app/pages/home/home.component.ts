@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { CharactersService } from '@services/characters.service';
 import { Character } from '../../models/character.model';
@@ -10,7 +11,9 @@ import { Character } from '../../models/character.model';
 export class HomeComponent implements OnInit {
   characters: Character[] = [];
   titleNotFound = 'Nada foi encontrado';
-  subtitleNotFound = 'Nada foi encontrado';
+  subtitleNotFound = 'Tente realizar uma nova busca.';
+  characterName!: string;
+  notFoundCharacter = false;
 
   constructor(private charactersService: CharactersService) {}
 
@@ -19,8 +22,32 @@ export class HomeComponent implements OnInit {
   }
 
   loadCharacters() {
-    this.charactersService
-      .fetchCharacters()
-      .subscribe((response) => (this.characters = response.results));
+    this.charactersService.fetchCharacters().subscribe((response) => {
+      this.characters = response.results;
+      this.notFoundCharacter = this.characters.length === 0;
+    });
+  }
+
+  searchCharacter(event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    const characterName = inputElement.value;
+
+    if (characterName) {
+      this.charactersService.fetchCharacters(characterName).subscribe({
+        next: (response) => {
+          this.characters = response.results;
+          this.notFoundCharacter = this.characters.length === 0;
+        },
+        error: (err: HttpErrorResponse) => {
+          console.error(err);
+          this.characters = [];
+          this.notFoundCharacter = true;
+        },
+      });
+
+      return;
+    }
+
+    this.loadCharacters();
   }
 }

@@ -11,7 +11,7 @@ export class CharactersService {
 
   constructor(private http: HttpClient) {}
 
-  fetchCharacters(): Observable<ApiResult> {
-    return this.http.get<ApiResult>(this.apiUrl);
+  fetchCharacters(characterName?: string): Observable<ApiResult> {
+    return this.http.get<ApiResult>(`${this.apiUrl}/?name=${characterName ? characterName : ''}`);
   }
 }
