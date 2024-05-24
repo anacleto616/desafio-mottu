@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class NotFoundComponent {
   @Input({ required: true }) title!: string;
   @Input({ required: true }) subtitle!: string;
-  @Input({ required: true }) isFavoritesPage = false;
+  @Input() isFavoritesPage = false;
 
   constructor(private router: Router) {}
 

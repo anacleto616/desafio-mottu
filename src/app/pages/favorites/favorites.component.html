@@ -1,5 +1,13 @@
 <main class="px-[22.5rem] py-12">
   <h2 class="font-system text-5xl text-[#00B5CC] mb-12">Favoritos</h2>
 
-  <app-not-found [isFavoritesPage]="true" [title]="titleNotFound" [subtitle]="subtitleNotFound" />
+  @if (favorites.length === 0) {
+    <app-not-found [isFavoritesPage]="true" [title]="titleNotFound" [subtitle]="subtitleNotFound" />
+  } @else {
+    <div class="w-full flex flex-wrap gap-6">
+      @for (favorite of favorites; track favorite.id) {
+        <app-character-card [character]="favorite" [isFavorite]="true" />
+      }
+    </div>
+  }
 </main>

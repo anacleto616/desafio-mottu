@@ -1,7 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { Character } from '@models/character.model';
 import { CharactersService } from '@services/characters.service';
-import { Character } from '../../models/character.model';
+import { FavoriteCharacterService } from './../../services/favorite-character.service';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +17,8 @@ export class HomeComponent implements OnInit {
   notFoundCharacter = false;
 
   constructor(private charactersService: CharactersService) {}
+
+  favoriteCharacterService = inject(FavoriteCharacterService);
 
   ngOnInit(): void {
     this.loadCharacters();
